@@ -1,0 +1,33 @@
+@use "@/shared/styles/tokens" as t;
+
+.art {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  color: t.$ink;
+}
+.tile { aspect-ratio: 4 / 5; }
+.tile svg { width: 38%; height: auto; transition: transform 0.5s ease; }
+.hero { aspect-ratio: 1; }
+.hero svg { width: 42%; height: auto; }
+.thumb { width: 88px; aspect-ratio: 1; flex: none; }
+.thumb svg { width: 50%; height: auto; }
+.sage { background: #dfe4da; }
+.sand { background: #ece5d8; }
+.clay { background: #e8dacd; }
+.slate { background: #dbe0e0; }
+
+.card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+
+  &:hover svg { transform: scale(1.06); }
+  &:focus-visible { outline: 2px solid t.$brand; outline-offset: 3px; }
+}
+.cardBody {
+  padding-top: 14px;
+  h3 { margin: 0 0 4px; font: 400 1.05rem/1.3 t.$font-display; }
+  p { display: flex; justify-content: space-between; margin: 0; color: t.$muted; font-size: 0.9rem; }
+}
+.rating { display: inline-flex; align-items: center; gap: 4px; }

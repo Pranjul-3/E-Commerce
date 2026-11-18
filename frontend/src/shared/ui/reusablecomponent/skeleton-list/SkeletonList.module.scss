@@ -1,0 +1,29 @@
+@use "@/shared/styles/tokens" as t;
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, t.$gray-50, t.$gray-100, t.$gray-50);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+
+  & + & {
+    border-top: 1px solid t.$gray-100;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}

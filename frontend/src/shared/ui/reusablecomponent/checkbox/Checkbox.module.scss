@@ -1,0 +1,117 @@
+@use "@/shared/styles/tokens" as t;
+
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.row {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.control {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+  cursor: pointer;
+  // Comfortable touch target without changing visuals.
+  padding: 2px 0;
+}
+
+// Visually hidden but focusable native input (keeps keyboard + screen reader support).
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- checkbox ---------- */
+.box {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid t.$gray-400;
+  border-radius: 4px;
+  background: t.$white;
+  color: t.$white;
+  transition:
+    background-color t.$transition,
+    border-color t.$transition;
+}
+
+.md .box {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+}
+.sm .box {
+  width: 15px;
+  height: 15px;
+  margin-top: 1px;
+}
+
+.input:checked + .box,
+.input:indeterminate + .box {
+  border-color: t.$brand;
+  background: t.$brand;
+}
+
+/* ---------- shared states ---------- */
+.input:focus-visible + .box {
+  outline: 2px solid t.$brand;
+  outline-offset: 2px;
+}
+
+.invalid .box {
+  border-color: t.$danger;
+  box-shadow: 0 0 0 1px t.$danger;
+}
+
+.disabled .control {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.label {
+  color: t.$gray-800;
+}
+
+.md .label {
+  font-size: 14px;
+  line-height: 20px;
+}
+.sm .label {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.required {
+  color: t.$danger;
+}
+
+.description {
+  font-size: 12px;
+  color: t.$gray-500;
+}
+
+.error {
+  margin: 0;
+  font-size: 12px;
+  color: t.$danger;
+}

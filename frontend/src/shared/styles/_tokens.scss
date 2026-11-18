@@ -1,0 +1,86 @@
+// App-wide layout tokens. Use with: @use "@/shared/styles/tokens" as t;
+
+// Theme colour. Change these four to re-theme the whole app (layout + table).
+$brand: #23403a;
+$brand-soft: #f1f3ef;
+$brand-tint: #e2e7e0;
+$brand-border: #a9b8ae;
+
+// Status colours (chips, validation, destructive buttons).
+$success: #2f6b4f;
+$warning: #a8701c;
+$danger: #a33a2c;
+$danger-hover: #862e22;
+$info: #33597a;
+
+$app-background: #faf8f4;
+$ink: #1d1f1c;
+$muted: #686c64;
+$line: #e4e0d8;
+$font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+$font-body: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+$page-width: 1200px;
+
+$gray-50: #f9fafb;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$gray-300: #d1d5db;
+$gray-400: #9ca3af;
+$gray-500: #6b7280;
+$gray-600: #4b5563;
+$gray-700: #374151;
+$gray-800: #1f2937;
+$gray-900: #111827;
+$white: #ffffff;
+
+$app-bar-height: 72px;
+$sidebar-width: 256px;
+$sidebar-collapsed-width: 64px;
+
+$radius: 4px;
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+$transition: 0.25s ease;
+
+$z-sidebar: 40;
+$z-backdrop: 39;
+$z-app-bar: 100;
+$z-dropdown: 110;
+$z-popover: 1000;
+
+$bp-sm: 480px;
+$bp-md: 768px;
+
+@mixin below-md {
+  @media (max-width: #{$bp-md - 1px}) {
+    @content;
+  }
+}
+
+@mixin below-sm {
+  @media (max-width: #{$bp-sm - 1px}) {
+    @content;
+  }
+}
+
+@mixin icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: $gray-600;
+  cursor: pointer;
+  transition: background-color $transition, color $transition;
+
+  &:hover {
+    background: $gray-100;
+    color: $gray-900;
+  }
+  &:focus-visible {
+    outline: 2px solid $brand;
+    outline-offset: 2px;
+  }
+}

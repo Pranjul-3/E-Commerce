@@ -1,0 +1,158 @@
+@use "@/shared/styles/tokens" as t;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: t.$z-popover - 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: rgba(17, 24, 39, 0.5);
+  animation: fade 0.15s ease-out;
+
+  // Phones: dialog slides up as a bottom sheet.
+  @include t.below-sm {
+    align-items: flex-end;
+    padding: 0;
+  }
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: min(90vh, 100dvh - 48px);
+  overflow: hidden;
+  border-radius: 10px;
+  background: t.$white;
+  box-shadow: t.$shadow-lg;
+  animation: rise 0.18s ease-out;
+
+  &:focus {
+    outline: none;
+  }
+
+  @include t.below-sm {
+    max-width: none !important;
+    max-height: 92dvh;
+    border-radius: 14px 14px 0 0;
+  }
+}
+
+.sm {
+  max-width: 400px;
+}
+.md {
+  max-width: 520px;
+}
+.lg {
+  max-width: 760px;
+}
+.full {
+  max-width: none;
+  height: calc(100dvh - 48px);
+  max-height: none;
+}
+
+.header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px 14px 20px;
+  border-bottom: 1px solid t.$gray-200;
+  background: t.$gray-50;
+}
+
+.danger {
+  border-bottom-color: t.$danger;
+  background: t.$danger;
+  color: t.$white;
+
+  .subtitle,
+  .close {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .close:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: t.$white;
+  }
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.headings {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.subtitle {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: t.$gray-500;
+}
+
+.close {
+  @include t.icon-button;
+  margin: -2px -4px 0 0;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  padding: 20px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.footer {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 20px 16px;
+  border-top: 1px solid t.$gray-100;
+
+  @include t.below-sm {
+    flex-direction: column-reverse;
+
+    > *,
+    > * > button {
+      width: 100%;
+    }
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .dialog {
+    animation: none;
+  }
+}

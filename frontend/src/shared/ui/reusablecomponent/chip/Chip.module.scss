@@ -1,0 +1,165 @@
+@use "sass:list";
+@use "@/shared/styles/tokens" as t;
+
+// Each tone sets three custom properties; the base rule uses them.
+$tones: (
+  "neutral": (
+    #f3f4f6,
+    #374151,
+    #d1d5db,
+  ),
+  "brand": (
+    t.$brand-soft,
+    #9a3412,
+    t.$brand-border,
+  ),
+  "success": (
+    #ecfdf5,
+    #065f46,
+    #6ee7b7,
+  ),
+  "warning": (
+    #fffbeb,
+    #92400e,
+    #fcd34d,
+  ),
+  "danger": (
+    #fef2f2,
+    #991b1b,
+    #fca5a5,
+  ),
+  "info": (
+    #eff6ff,
+    #1e40af,
+    #93c5fd,
+  ),
+  "purple": (
+    #f5f3ff,
+    #5b21b6,
+    #c4b5fd,
+  ),
+  "teal": (
+    #f0fdfa,
+    #115e59,
+    #5eead4,
+  ),
+  "slate": (
+    #f1f5f9,
+    #334155,
+    #94a3b8,
+  ),
+  "indigo": (
+    #eef2ff,
+    #3730a3,
+    #a5b4fc,
+  ),
+  "pink": (
+    #fdf2f8,
+    #9d174d,
+    #f9a8d4,
+  ),
+  "cyan": (
+    #ecfeff,
+    #155e75,
+    #67e8f9,
+  ),
+  "rose": (
+    #fff1f2,
+    #9f1239,
+    #fda4af,
+  ),
+  "lime": (
+    #f7fee7,
+    #3f6212,
+    #bef264,
+  ),
+  "brown": (
+    #fdf8f3,
+    #78350f,
+    #d6a77a,
+  ),
+);
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+  border: 1px solid var(--chip-border);
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--chip-fg);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+@each $name, $colors in $tones {
+  .#{$name} {
+    --chip-bg: #{list.nth($colors, 1)};
+    --chip-fg: #{list.nth($colors, 2)};
+    --chip-border: #{list.nth($colors, 3)};
+  }
+}
+
+.sm {
+  height: 18px;
+  padding: 0 6px;
+  font-size: 10px;
+}
+.md {
+  height: 22px;
+  padding: 0 8px;
+  font-size: 12px;
+}
+.lg {
+  height: 28px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.rectangle {
+  border-radius: 4px;
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.action {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  margin-right: -2px;
+  padding: 1px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  opacity: 0.7;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.08);
+  }
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 1px;
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+}

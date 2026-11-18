@@ -1,0 +1,282 @@
+@use "@/shared/styles/tokens" as t;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: t.$gray-700;
+}
+
+.required {
+  color: t.$danger;
+}
+
+/* ---------- trigger ---------- */
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 0 10px 0 12px;
+  border: 1.5px solid t.$gray-300;
+  border-radius: 6px;
+  background: t.$white;
+  color: t.$gray-900;
+  cursor: pointer;
+  transition:
+    border-color t.$transition,
+    box-shadow t.$transition;
+
+  &:hover:not(.disabled):not(.readOnly) {
+    border-color: t.$gray-400;
+  }
+  &:focus-visible,
+  &.open {
+    outline: none;
+    border-color: t.$brand;
+    box-shadow: 0 0 0 3px rgba(t.$brand, 0.15);
+  }
+}
+
+.sm {
+  min-height: 32px;
+  font-size: 13px;
+}
+.md {
+  min-height: 40px;
+  font-size: 14px;
+}
+.lg {
+  min-height: 46px;
+  font-size: 15px;
+}
+
+.invalid,
+.invalid:hover:not(.disabled) {
+  border-color: t.$danger;
+}
+
+.disabled {
+  background: t.$gray-100;
+  color: t.$gray-400;
+  cursor: not-allowed;
+}
+
+.readOnly {
+  background: t.$gray-50;
+  cursor: default;
+}
+
+.value {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-width: 0;
+  padding: 3px 0;
+}
+
+.placeholder {
+  overflow: hidden;
+  color: t.$gray-400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.singleValue {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.ellipsis {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  min-width: 0;
+}
+
+.icons {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 4px;
+  color: t.$gray-500;
+}
+
+.iconButton {
+  @include t.icon-button;
+  padding: 2px;
+
+  &:hover {
+    color: t.$danger;
+  }
+}
+
+.chevron {
+  transition: transform t.$transition;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.message {
+  margin: 0;
+  font-size: 12px;
+  color: t.$gray-500;
+}
+
+.errorMessage {
+  color: t.$danger;
+}
+
+/* ---------- menu (portaled, position: fixed) ---------- */
+.menu {
+  position: fixed;
+  z-index: t.$z-popover;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid t.$gray-200;
+  border-radius: 8px;
+  background: t.$white;
+  box-shadow: t.$shadow-lg;
+}
+
+.menuTop {
+  box-shadow:
+    0 -10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 -4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.searchBox {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid t.$gray-100;
+  background: t.$white;
+  color: t.$gray-400;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-size: 14px;
+  color: t.$gray-900;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.list {
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: t.$gray-800;
+  cursor: pointer;
+
+  // Larger touch targets on small screens.
+  @include t.below-md {
+    min-height: 44px;
+  }
+}
+
+.active {
+  background: t.$gray-100;
+}
+
+.selected {
+  color: t.$brand;
+  font-weight: 500;
+}
+
+.optionDisabled {
+  color: t.$gray-400;
+  cursor: not-allowed;
+}
+
+.optionIcon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.description {
+  flex-shrink: 0;
+  margin-left: auto;
+  font-size: 12px;
+  color: t.$gray-500;
+}
+
+.tick {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.description + .tick {
+  margin-left: 0;
+}
+
+.checkbox {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid t.$gray-300;
+  border-radius: 4px;
+  background: t.$white;
+  color: t.$white;
+}
+
+.checkboxChecked {
+  border-color: t.$brand;
+  background: t.$brand;
+}
+
+.empty {
+  padding: 12px;
+  font-size: 14px;
+  color: t.$gray-500;
+  text-align: center;
+}
+
+// Chips inside the "+N" tooltip.
+.moreChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}

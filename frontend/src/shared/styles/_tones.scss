@@ -1,0 +1,29 @@
+@use "tokens" as t;
+
+// Tone name → colour (one per status family; same names as the shared Chip tones).
+$tone-colours: (
+  "neutral": t.$gray-400,
+  "slate": #64748b,
+  "brand": t.$brand,
+  "success": t.$success,
+  "warning": t.$warning,
+  "danger": t.$danger,
+  "info": t.$info,
+  "purple": #7c3aed,
+  "teal": #0d9488,
+  "indigo": #4f46e5,
+  "pink": #db2777,
+  "cyan": #0891b2,
+  "rose": #e11d48,
+  "lime": #65a30d,
+  "brown": #92400e,
+);
+
+// Sets `$prop` from the element's `data-tone` (e.g. `@include tone-colour(--tone)`).
+@mixin tone-colour($prop) {
+  @each $tone, $colour in $tone-colours {
+    &[data-tone="#{$tone}"] {
+      #{$prop}: $colour;
+    }
+  }
+}

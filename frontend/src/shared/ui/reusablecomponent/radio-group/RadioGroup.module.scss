@@ -1,0 +1,148 @@
+@use "@/shared/styles/tokens" as t;
+
+.root {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  padding: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: t.$gray-700;
+}
+
+.required {
+  color: t.$danger;
+}
+
+.options {
+  display: flex;
+  gap: 8px 20px;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.horizontal {
+  flex-wrap: wrap;
+}
+
+.option {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+  padding: 2px 0;
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+}
+
+.circle {
+  position: relative;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  border: 1.5px solid t.$gray-400;
+  border-radius: 50%;
+  background: t.$white;
+  transition: border-color t.$transition;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: t.$brand;
+    transform: scale(0);
+    transition: transform t.$transition;
+  }
+}
+
+.input:checked + .circle {
+  border-color: t.$brand;
+
+  &::after {
+    transform: scale(1);
+  }
+}
+
+.input:focus-visible + .circle {
+  outline: 2px solid t.$brand;
+  outline-offset: 2px;
+}
+
+.invalid .circle {
+  border-color: t.$danger;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.optionLabel {
+  font-size: 14px;
+  line-height: 20px;
+  color: t.$gray-800;
+}
+
+.description {
+  font-size: 12px;
+  color: t.$gray-500;
+}
+
+/* ---------- card variant ---------- */
+.card {
+  .option {
+    flex: 1 1 200px;
+    padding: 12px;
+    border: 1.5px solid t.$gray-200;
+    border-radius: t.$radius;
+    background: t.$white;
+    transition:
+      border-color t.$transition,
+      background-color t.$transition;
+
+    &:hover:not(.disabled) {
+      border-color: t.$gray-300;
+    }
+  }
+
+  .checked {
+    border-color: t.$brand;
+    background: t.$brand-soft;
+  }
+}
+
+.message {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: t.$gray-500;
+}
+
+.error {
+  color: t.$danger;
+}

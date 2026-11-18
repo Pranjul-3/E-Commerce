@@ -1,0 +1,205 @@
+@use "@/shared/styles/tokens" as t;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.labelRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 6px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: t.$gray-700;
+}
+
+.required {
+  color: t.$danger;
+}
+
+.subLabel {
+  flex-basis: 100%;
+  font-size: 12px;
+  color: t.$gray-500;
+}
+
+/* ---------- field box ---------- */
+.field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 6px 0 12px;
+  border: 1.5px solid t.$gray-300;
+  border-radius: 6px;
+  background: t.$white;
+  transition:
+    border-color t.$transition,
+    box-shadow t.$transition;
+
+  &:hover {
+    border-color: t.$gray-400;
+  }
+  &:focus-within {
+    border-color: t.$brand;
+    box-shadow: 0 0 0 3px rgba(t.$brand, 0.15);
+  }
+}
+
+// Field with a bottom bar: the bar wraps onto its own line inside the border, edge to edge.
+.attached {
+  flex-wrap: wrap;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.bottomBar {
+  display: flex;
+  flex: 0 0 calc(100% + 18px);
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  // Cancel the field's side padding (12px left, 6px right) so the bar reaches both borders.
+  margin: 8px -6px 0 -12px;
+  padding: 4px 6px 4px 12px;
+  border-top: 1px solid t.$gray-200;
+  background: t.$gray-50;
+}
+
+.textbox {
+  align-items: flex-start;
+  padding-top: 8px;
+  padding-bottom: 8px;
+
+  .adornments {
+    padding-top: 2px;
+  }
+}
+
+.success {
+  border-color: t.$success;
+}
+.warning {
+  border-color: t.$warning;
+}
+.error,
+.error:hover {
+  border-color: t.$danger;
+}
+.error:focus-within {
+  box-shadow: 0 0 0 3px rgba(t.$danger, 0.15);
+}
+
+.disabled {
+  background: t.$gray-100;
+  opacity: 0.7;
+  cursor: not-allowed;
+
+  .control {
+    cursor: not-allowed;
+  }
+}
+
+.readOnly {
+  background: t.$gray-50;
+}
+
+.control {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  color: t.$gray-900;
+
+  &::placeholder {
+    color: t.$gray-400;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+textarea.control {
+  min-height: 60px;
+  resize: vertical;
+}
+
+.leftIcon,
+.adornments {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 4px;
+  color: t.$gray-400;
+}
+
+.statusIcon {
+  .success & {
+    color: t.$success;
+  }
+  .warning & {
+    color: t.$warning;
+  }
+  .error & {
+    color: t.$danger;
+  }
+}
+
+.iconButton {
+  @include t.icon-button;
+  padding: 4px;
+}
+
+.action {
+  margin-left: 2px;
+}
+
+.actionSuccess {
+  color: t.$success;
+}
+
+/* ---------- footer ---------- */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.message {
+  margin: 0;
+  font-size: 12px;
+  color: t.$gray-500;
+}
+
+.errorMessage {
+  color: t.$danger;
+}
+.warningMessage {
+  color: t.$warning;
+}
+.successMessage {
+  color: t.$success;
+}
+
+.counter {
+  flex-shrink: 0;
+  font-size: 12px;
+  color: t.$gray-500;
+  font-variant-numeric: tabular-nums;
+}
+
+.counterFull {
+  color: t.$danger;
+}

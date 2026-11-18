@@ -1,0 +1,26 @@
+@use "@/shared/styles/tokens" as t;
+
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.count {
+  font-size: 12px;
+  color: t.$gray-500;
+  font-variant-numeric: tabular-nums;
+}
+
+.full {
+  color: t.$danger;
+}
+
+.tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}

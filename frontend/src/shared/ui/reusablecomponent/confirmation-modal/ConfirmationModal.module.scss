@@ -1,0 +1,104 @@
+@use "@/shared/styles/tokens" as t;
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.message {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: t.$gray-700;
+}
+
+.warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 12px;
+  border-left: 3px solid t.$danger;
+  border-radius: 4px;
+  background: #fef2f2;
+  font-size: 13px;
+  font-weight: 500;
+  color: #991b1b;
+
+  svg {
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+}
+
+.details {
+  padding: 12px 14px;
+  border: 1px solid t.$gray-200;
+  border-radius: t.$radius;
+  background: t.$gray-50;
+}
+
+.detailsTitle {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: t.$gray-900;
+}
+
+.detailList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+}
+
+.detailRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 12px;
+  font-size: 13px;
+
+  dt {
+    font-weight: 500;
+    color: t.$gray-600;
+  }
+  dd {
+    min-width: 0;
+    margin: 0;
+    overflow-wrap: anywhere;
+    color: t.$gray-800;
+    text-align: right;
+  }
+}
+
+.chips {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.muted {
+  color: t.$gray-400;
+}
+
+.ack,
+.ackDanger {
+  padding: 12px;
+  border: 1px solid t.$gray-200;
+  border-radius: t.$radius;
+  background: t.$gray-50;
+}
+
+.ackDanger {
+  border-color: #fecaca;
+  background: #fef2f2;
+}
+
+.error {
+  margin: 0;
+  font-size: 13px;
+  color: t.$danger;
+}

@@ -1,0 +1,18 @@
+@use "@/shared/styles/tokens" as t;
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: t.$app-background;
+  color: t.$ink;
+  font-family: t.$font-body;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2 { font-family: t.$font-display; font-weight: 400; line-height: 1.15; }
+.message-page { max-width: 520px; margin: 0 auto; padding: 96px 16px; text-align: center; }
+.message-page h1 { margin: 0 0 12px; font-size: 1.9rem; }
+.message-page p { margin: 0 0 24px; color: t.$muted; }
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
